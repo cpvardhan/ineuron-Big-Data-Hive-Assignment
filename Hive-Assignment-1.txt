@@ -1,6 +1,6 @@
 ## Creating a Table which will store a csv data
 
-create internal table sales_order_data_csv
+create  table sales_order_data_csv
 (
 ORDERNUMBER int,
 QUANTITYORDERED int,
