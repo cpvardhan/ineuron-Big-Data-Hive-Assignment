@@ -43,12 +43,31 @@ Question-1:calculate total sales per year
 select sum(sales) as total_sales,year_id  from sales_order_data_orc group by year_id;
 
 -----------------------------------------------------------------------------------------------------------
+Question-2:Find a product for which maximum order were placed.
+select productcode , count(productline)  as count_of_product  from sales_order_data_csv  order by count_of_product desc limit 1;
+
+-----------------------------------------------------------------------------------------------------------
 Question-3: calculate total sales for each quarter
 select sum(sales) as Total_Sales ,qtr_id, year_id from sales_order_data_orc group by year_id , qtr_id;
 
+-----------------------------------------------------------------------------------------------------------
+Question-4: In which quarter sales was minimum
+select  qtr_id ,sum(sales) as Total_Sales  , year_id  from sales_order_data_csv  group by  year_id order by Total_Sales asc limit 1
+
+-----------------------------------------------------------------------------------------------------------
+Question-5: In which country sales was maximum and in which country sales was minimum
+(select   country,sum(sales) as Total_Sales    from sales_order_data_csv  group by  country  order by Total_Sales asc limit 1 )
+union all 
+(select  country,sum(sales) as Total_Sales    from sales_order_data_csv  group by  country  order by Total_Sales desc limit 1);
 
 -----------------------------------------------------------------------------------------------------------
 Question-6: Calculate quarter sales for each city
 select city ,sum(sales) as sum_of_sales  , year_id, qtr_id from  sales_order_data_orc group by qtr_id , city order by  city ,year_id;
-
 -----------------------------------------------------------------------------------------------------------
+Question-7: Find a month for each year in which maximum number of quantities were sold
+select 
+distinct(year_id) ,
+count(quantityordered) as total_ordered  ,
+month_id  from sales_order_data_csv  
+group by year_id  
+order by total_ordered desc limit 3;
