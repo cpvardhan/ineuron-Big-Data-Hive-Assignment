@@ -45,3 +45,10 @@ select sum(sales) as total_sales,year_id  from sales_order_data_orc group by yea
 -----------------------------------------------------------------------------------------------------------
 Question-3: calculate total sales for each quarter
 select sum(sales) as Total_Sales ,qtr_id, year_id from sales_order_data_orc group by year_id , qtr_id;
+
+
+-----------------------------------------------------------------------------------------------------------
+Question-6: Calculate quarter sales for each city
+select city ,sum(sales) as sum_of_sales  , year_id, qtr_id from  sales_order_data_orc group by qtr_id , city order by  city ,year_id;
+
+-----------------------------------------------------------------------------------------------------------
