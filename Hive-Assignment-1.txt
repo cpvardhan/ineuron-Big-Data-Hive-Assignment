@@ -42,3 +42,6 @@ create table sales_order_data_csv stored as orc as select * from sales_order_dat
 Question-1:calculate total sales per year
 select sum(sales) as total_sales,year_id  from sales_order_data_orc group by year_id;
 
+-----------------------------------------------------------------------------------------------------------
+Question-3: calculate total sales for each quarter
+select sum(sales) as Total_Sales ,qtr_id, year_id from sales_order_data_orc group by year_id , qtr_id;
