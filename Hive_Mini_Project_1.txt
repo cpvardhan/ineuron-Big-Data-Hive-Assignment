@@ -11,3 +11,25 @@ load data local inpath 'file:////home/cloudera/assignment1/AgentPerformance.csv'
 
 =========================================================================================
 Question-3  : list of all agents names;
+select agent_name  as Agent_Name from performance;
+
+
+=========================================================================================
+Question-4:find out agent average rating
+select avg(average_Rating) as Average_Rating_For_All_Agents from performance ;
+
+=========================================================================================
+Question-5: Total Working Days for each agents
+select agent ,count(distinct(creation_data)) as Total_working_Data  from logging group by agent order by Total_working_Data;
+(Since the user is logging two or three times in a particular date so we need to use distinct fucntion)
+
+select agent ,count(creation_data) as Total_working_Data  from logging group by agent order by Total_working_Data;
+
+=========================================================================================
+Question-6:Total Query that each agent has taken
+select agent_name , sum(total_chats) as Total_Query from performance group by agent_name order by Total_Query;
+
+=========================================================================================
+Question-7:Total Feedback that each agent has recieved
+hiveselect agent_name , sum(total_feedback) as Total_Feedback from performance group by agent_name order by Total_Feedback;
+
