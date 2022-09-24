@@ -1,0 +1,13 @@
+=========================================================================================
+Question-1: Create a Schema Based on Given dataset
+create table logging(sl_no int, agent string, creation_data string,login_time string, logout_time string,duration string)row format delimited fields terminated by ','  tblproperties('skip.header.line.count'='1');
+create table performance(s_no int, date string,agent_name string, total_chats int,average_response_time string , average_resolution_time string, average_rating int, total_feedback int)row format delimited fields terminated by ','  tblproperties('skip.header.line.count'='1');
+
+=========================================================================================
+Question-2: Dump the data inside the hdfs om the given schema location
+load data local inpath 'file:////home/cloudera/assignment1/AgentLogingReport.csv'  into table logging;
+load data local inpath 'file:////home/cloudera/assignment1/AgentPerformance.csv'  into table performance;
+
+
+=========================================================================================
+Question-3  : list of all agents names;
