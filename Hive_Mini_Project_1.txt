@@ -33,3 +33,20 @@ select agent_name , sum(total_chats) as Total_Query from performance group by ag
 Question-7:Total Feedback that each agent has recieved
 hiveselect agent_name , sum(total_feedback) as Total_Feedback from performance group by agent_name order by Total_Feedback;
 
+
+=========================================================================================
+Question-8. Agent name who have average rating between 3.5 to 4 
+select agent_name  ,avg(average_rating) as Average_Rating from performance_orc where Average_Rating between 3.5 and 4 group by agent_name order by Average_Rating;
+
+=========================================================================================
+9. Agent name who have rating less than 3.5 
+hive> select agent_name  ,avg(average_rating) as Average_Rating from performance_orc where Average_Rating < 3.5 group by agent_name order by Average_Rating;
+
+=========================================================================================
+10. Agent name who have rating more than 4.5 
+hive> select agent_name  ,avg(average_rating) as Average_Rating from performance_orc where Average_Rating > 4.5 group by agent_name order by Average_Rating;
+
+=========================================================================================
+11. How many feedback agents have received more than 4.5 average
+ select count(agent_name) from performance_orc where total_feedback > 4.5;
+
